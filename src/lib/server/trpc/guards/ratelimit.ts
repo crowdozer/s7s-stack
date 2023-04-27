@@ -8,10 +8,10 @@ import type { ServerTRPCEnforcer } from '../';
 process.env.UPSTASH_REDIS_REST_TOKEN = S7S_UPSTASH_REDIS_REST_TOKEN;
 process.env.UPSTASH_REDIS_REST_URL = S7S_UPSTASH_REDIS_REST_URL;
 
-// Create a new ratelimiter, that allows 3 requests per 1 minute
+// Create a new ratelimiter allowing 60 requests 1 minute
 export const ratelimiter = new Ratelimit({
 	redis: Redis.fromEnv(),
-	limiter: Ratelimit.slidingWindow(6, '1 m'),
+	limiter: Ratelimit.slidingWindow(60, '1 m'),
 	analytics: true,
 	/**
 	 * Optional prefix for the keys used in redis. This is useful if you want to share a redis

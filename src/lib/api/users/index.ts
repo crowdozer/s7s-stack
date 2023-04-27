@@ -1,4 +1,9 @@
-import { createTRPCRouter, authedRequest, guardedProcedure } from '$server/trpc';
+import {
+	createTRPCRouter,
+	authedRequest,
+	guardedProcedure,
+	ratelimitedRequest,
+} from '$server/trpc';
 import { z } from 'zod';
 
 /**
@@ -9,7 +14,7 @@ export const usersRouter = createTRPCRouter({
 	/**
 	 * If the user is logged in, return all of their data.
 	 */
-	getMyData: guardedProcedure(authedRequest)
+	getMyData: guardedProcedure(authedRequest, ratelimitedRequest)
 		.input(
 			z
 				.object({
