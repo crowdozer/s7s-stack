@@ -21,8 +21,8 @@ export async function createContext(event: RequestEvent) {
 /**
  * Request context, inferred from createContext()
  *
- * This is a utility type, but if your guard modifies request context,
- * you may need to use this.
+ * This is a utility type. If your guard modifies
+ * request context, you probably need to use this.
  */
 export type InferredRequestContext = ResolvedType<ReturnType<typeof createContext>>;
 
