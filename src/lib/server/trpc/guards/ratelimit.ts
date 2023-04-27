@@ -2,8 +2,6 @@ import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 
 // process.env fix for Redis.fromEnv()
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { S7S_UPSTASH_REDIS_REST_TOKEN, S7S_UPSTASH_REDIS_REST_URL } from '$env/static/private';
 import { TRPCError } from '@trpc/server';
 import type { ServerTRPCEnforcer } from '../';
