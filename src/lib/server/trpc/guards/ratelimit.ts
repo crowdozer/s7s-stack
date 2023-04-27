@@ -18,7 +18,7 @@ export const ratelimiter = new Ratelimit({
 	 * instance with other applications and want to avoid key collisions. The default prefix is
 	 * "@upstash/ratelimit"
 	 */
-	prefix: '@upstash/ratelimit',
+	prefix: '@S7S/ratelimit',
 });
 
 /**
