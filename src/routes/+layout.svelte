@@ -5,9 +5,9 @@
 	import '~/app.postcss';
 
 	/**
-	 * Uncomment this line if you want analytics
+	 * Comment this line if you don't want analytics or aren't on Vercel
 	 */
-	// import '$web/utils/analytics'
+	import '$web/utils/analytics';
 </script>
 
 <div class="contents">
