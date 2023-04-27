@@ -87,6 +87,8 @@ export const t = initTRPC.context<typeof createContext>().create({
 export const createTRPCRouter = t.router;
 
 /**
+ * 3. tRPC Procedures
+ *
  * This is where all the tRPC server stuff is created and plugged in.
  * The pieces you will need to use are documented accordingly near the end.
  */
