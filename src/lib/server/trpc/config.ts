@@ -27,10 +27,10 @@ export async function createContext(event: RequestEvent) {
 export type InferredRequestContext = ResolvedType<ReturnType<typeof createContext>>;
 
 /**
- * Generic type for TRPC Enforcers
+ * Generic type for tRPC Enforcers
  *
  * You can import this type to help build your Guards,
- * but it isn't very useful if if they do notmodify the request context.
+ * but it isn't very useful if if they do not modify the request context.
  */
 export type ServerTRPCEnforcer<T extends InferredRequestContext = InferredRequestContext> = (
 	state: T,
