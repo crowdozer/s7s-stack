@@ -109,6 +109,9 @@ export type Guard<T extends InferredRequestContext> = (state: T) => Promise<T>;
  */
 export function guardedProcedure<T extends InferredRequestContext>(...guards: Guard<T>[]) {
 	const middleware = t.middleware(async ({ ctx, next }) => {
+		/**
+		 * This is the only black magic required, I promise
+		 */
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		let context: T = ctx;
