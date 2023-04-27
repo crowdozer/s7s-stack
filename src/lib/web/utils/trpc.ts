@@ -1,8 +1,8 @@
 /**
- * S3 Comment:
+ * S7S Comment:
  * This is the web app's tRPC i/o.
- *  
- * `import { trpc } from ...` and have fun! 
+ *
+ * `import { trpc } from ...` and have fun!
  */
 
 import type { Router } from '$api/router';
@@ -18,7 +18,7 @@ const getBaseUrl = () => {
 	return `http://localhost:${process.env.PORT ?? 5173}`; // dev SSR should use localhost
 };
 
-export function trpc(init?: TRPCClientInit) {
+export function trpc(_init?: TRPCClientInit) {
 	const isBrowser = typeof window !== 'undefined';
 	if (isBrowser && browserClient) return browserClient;
 	const client = createTRPCClient<Router>({
@@ -42,5 +42,3 @@ export function trpc(init?: TRPCClientInit) {
 	if (isBrowser) browserClient = client;
 	return client;
 }
-
-

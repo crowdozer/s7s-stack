@@ -16,6 +16,7 @@
 	"devDependencies": {
 		"@clerk/clerk-js": "^4.38.4",
 		"@clerk/clerk-sdk-node": "^4.8.6",
+		"@prisma/client": "^4.13.0",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/adapter-vercel": "^2.4.1",
 		"@sveltejs/kit": "^1.5.0",
@@ -40,6 +41,7 @@
 		"prettier": "^2.8.7",
 		"prettier-plugin-svelte": "^2.8.1",
 		"prettier-plugin-tailwindcss": "^0.2.7",
+		"prisma": "^4.13.0",
 		"qs": "^6.11.1",
 		"superjson": "^1.12.3",
 		"svelte": "^3.54.0",

@@ -1,11 +1,11 @@
 /**
- * S3 Comment:
+ * S7S Comment:
  * This is where server hooks are defined. This stack uses the
- * Handle hook to inject context into every request. 
- * 
- * It's fine to extend this behavior, but make sure you define it: 
+ * Handle hook to inject context into every request.
+ *
+ * It's fine to extend this behavior, but make sure you define it:
  * `src/app.d.ts`
- * 
+ *
  * IMPORTANT NOTE:
  * The order of events matters! Handlers apply synchronously.
  */

@@ -1,22 +1,22 @@
 /**
- * S3 Comment:
+ * S7S Comment:
  * This is where Clerk is injected into every request.
- * 
+ *
  * We want this to be fast, so no network requests or db calls.
  */
 
 import type { Handle } from '@sveltejs/kit';
-import { S3_CLERK_PEM } from '$env/static/private';
+import { S7S_CLERK_PEM } from '$env/static/private';
 import jwt from 'jsonwebtoken';
 import type { EdgeAuthState } from '~/types';
 
-const splitPem = S3_CLERK_PEM.match(/.{1,64}/g) as RegExpMatchArray;
+const splitPem = S7S_CLERK_PEM.match(/.{1,64}/g) as RegExpMatchArray;
 const publicKey =
 	'-----BEGIN PUBLIC KEY-----\n' + splitPem.join('\n') + '\n-----END PUBLIC KEY-----';
 
 /**
  * Infers auth state from the user's JWT token
- * See Clerk docs for implementation details 
+ * See Clerk docs for implementation details
  */
 async function getClerkUserNetworkless(session: string | undefined): Promise<EdgeAuthState> {
 	if (!session) {

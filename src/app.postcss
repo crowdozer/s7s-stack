@@ -2,6 +2,14 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+html,
 body {
-	@apply bg-neutral-950 text-zinc-300;
+	height: 100vh;
+	overflow: hidden;
+	font-family: Consolas, monospace;
+}
+
+body {
+	background-image: radial-gradient(at 0% 100%, rgba(120, 0, 0, 0.5) 0px, transparent 50%),
+		radial-gradient(at 98% 100%, rgba(0, 0, 255, 0.75) 0px, black 50%);
 }

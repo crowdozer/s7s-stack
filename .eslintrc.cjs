@@ -23,8 +23,11 @@ module.exports = {
 		node: true,
 	},
 	rules: {
+		// Clarity never hurts.
 		'@typescript-eslint/no-inferrable-types': 'off',
+		// It's a useful shortcut for prototyping.
 		'@typescript-eslint/no-explicit-any': 'off',
-		'@typescript-eslint/ban-ts-comment': 'warn',
+		// Let it slide if it begins with an _underscore.
+		'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
 	},
 };

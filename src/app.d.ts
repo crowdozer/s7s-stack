@@ -7,15 +7,23 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			/**
-			 * S3 Comment:
-			 * This is where we tell Svelte-Kit that every request 
-			 * *WILL* have auth.
-			 * 
+			 * S7S Comment:
+			 * This is where we tell Svelte-Kit that every request
+			 * will include custom data..
+			 *
 			 * If you add something here, implement it at:
 			 * `src/hooks.server.ts`
-			 * 
+			 *
 			 * You can see examples in:
 			 * `src/lib/server/hooks`
+			 */
+
+			// ---
+
+			/**
+			 * The user's Authentication state, available on the
+			 * Edge with no database calls. Information is limited,
+			 * but auth state is known.
 			 */
 			user: EdgeAuthState;
 		}

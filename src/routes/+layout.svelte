@@ -1,18 +1,15 @@
 <script lang="ts">
-	import '~/app.postcss'
+	/**
+	 * Import the app's css file, which in turn imports all of the tailwind utils
+	 */
+	import '~/app.postcss';
+
 	/**
 	 * Uncomment this line if you want analytics
 	 */
 	// import '$web/utils/analytics'
-	import { clerkUser } from '$web/stores/clerk';
-	if ($clerkUser) console.log($clerkUser)
-	
 </script>
 
-{#if !$clerkUser.loading}
+<div class="contents">
 	<slot />
-{:else}
-	<div class="contents">
-		<p>Loading...</p>
-	</div>
-{/if}
+</div>

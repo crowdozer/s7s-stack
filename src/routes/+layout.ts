@@ -1,9 +1,9 @@
 /**
- * S3 Comment:
- * As the root layout server file, code here applies 
+ * S7S Comment:
+ * As the root layout server file, code here applies
  * to *every* request.
- * 
- * To prehydrate the User auth store for the client, 
+ *
+ * To prehydrate the User auth store for the client,
  * we synchronously initialize and load their Clerk info.
  */
 

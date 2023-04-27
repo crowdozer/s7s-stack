@@ -1,11 +1,11 @@
 /**
- * S3 Comment:
- * This is the store prehydrated with user data. 
+ * S7S Comment:
+ * This is the store prehydrated with user data.
  */
 
 import { derived, writable } from 'svelte/store';
 import Clerk from '@clerk/clerk-js';
-import { PUBLIC_S3_CLERK_PUBLISHABLE } from '$env/static/public';
+import { PUBLIC_S7S_CLERK_PUBLISHABLE } from '$env/static/public';
 
 /**
  * Store containing the Clerk instance
@@ -35,7 +35,7 @@ export const clerkUser = derived([clerkInstance], function ([clerk]) {
  */
 export async function initialize() {
 	if (typeof window !== 'undefined') {
-		const clerk = new Clerk(PUBLIC_S3_CLERK_PUBLISHABLE);
+		const clerk = new Clerk(PUBLIC_S7S_CLERK_PUBLISHABLE);
 		await clerk.load();
 		clerkInstance.set(clerk);
 	}

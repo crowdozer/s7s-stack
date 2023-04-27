@@ -1,12 +1,14 @@
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
-import type { ServerTRPCEnforcer } from '~/types';
 
 // process.env fix for Redis.fromEnv()
-import { S3_UPSTASH_REDIS_REST_TOKEN, S3_UPSTASH_REDIS_REST_URL } from '$env/static/private';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { S7S_UPSTASH_REDIS_REST_TOKEN, S7S_UPSTASH_REDIS_REST_URL } from '$env/static/private';
 import { TRPCError } from '@trpc/server';
-process.env.UPSTASH_REDIS_REST_TOKEN = S3_UPSTASH_REDIS_REST_TOKEN;
-process.env.UPSTASH_REDIS_REST_URL = S3_UPSTASH_REDIS_REST_URL;
+import type { ServerTRPCEnforcer } from '../';
+process.env.UPSTASH_REDIS_REST_TOKEN = S7S_UPSTASH_REDIS_REST_TOKEN;
+process.env.UPSTASH_REDIS_REST_URL = S7S_UPSTASH_REDIS_REST_URL;
 
 // Create a new ratelimiter, that allows 3 requests per 1 minute
 export const ratelimiter = new Ratelimit({
@@ -18,13 +20,15 @@ export const ratelimiter = new Ratelimit({
 	 * instance with other applications and want to avoid key collisions. The default prefix is
 	 * "@upstash/ratelimit"
 	 */
-	prefix: "@upstash/ratelimit",
+	prefix: '@upstash/ratelimit',
 });
 
 /**
  * Enforces that the user isn't spamming requests
  */
-const ratelimitedRequest: ServerTRPCEnforcer = async ({ locals, getClientAddress }) => {
+const ratelimitedRequest: ServerTRPCEnforcer = async (req) => {
+	const { locals, getClientAddress } = req.event;
+
 	const key = locals.user.isLoggedIn
 		? // use their userid
 		  'user:' + locals.user.id
@@ -39,6 +43,8 @@ const ratelimitedRequest: ServerTRPCEnforcer = async ({ locals, getClientAddress
 			message: 'Rate limited',
 		});
 	}
+
+	return req;
 };
 
 export default ratelimitedRequest;

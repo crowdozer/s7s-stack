@@ -11,6 +11,12 @@ import dotenv from 'dotenv';
  * can be used in server-side code only, and are injected into the bundle
  * at build time. Ensure all referenced environment variables are declared.
  *
+ * It is recommended you don't remove, replace, or rename any of these existing
+ * values, because they are core pieces used by the stack.
+ *
+ * If you wish to remove them, search the directory by their name
+ * (example: S7S_UPSTASH_REDIS_REST_URL) to discover where they are required.
+ *
  * Example:
  * ```js
  * const Schema = z
@@ -21,13 +27,16 @@ import dotenv from 'dotenv';
  */
 const Schema = z.object({
 	// Redis Ratelimiting requirements
-	S3_UPSTASH_REDIS_REST_URL: z.string(),
-	S3_UPSTASH_REDIS_REST_TOKEN: z.string(),
-	
+	S7S_UPSTASH_REDIS_REST_URL: z.string(),
+	S7S_UPSTASH_REDIS_REST_TOKEN: z.string(),
+
 	// Clerk requirements
-	S3_CLERK_UNPUBLISHABLE: z.string(),
-	S3_CLERK_PEM: z.string(),
-	PUBLIC_S3_CLERK_PUBLISHABLE: z.string(),
+	S7S_CLERK_UNPUBLISHABLE: z.string(),
+	S7S_CLERK_PEM: z.string(),
+	PUBLIC_S7S_CLERK_PUBLISHABLE: z.string(),
+
+	// Prisma DB requirements
+	S7S_PRISMA_URL: z.string(),
 });
 
 /**
