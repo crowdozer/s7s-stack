@@ -97,14 +97,16 @@ export const createTRPCRouter = t.router;
 export const procedure = t.procedure;
 
 /**
+ * Utility type - you may find this useful when building Guards.
+ */
+export type Guard<T extends InferredRequestContext> = (state: T) => Promise<T>;
+
+/**
  * Protected procedure
  *
  * Runs an array of gaurds against the request, one at a time, in order
  * Request is aborted as soon as one throws
  */
-
-export type Guard<T extends InferredRequestContext> = (state: T) => Promise<T>;
-
 export function guardedProcedure<T extends InferredRequestContext>(...guards: Guard<T>[]) {
 	const middleware = t.middleware(async ({ ctx, next }) => {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
