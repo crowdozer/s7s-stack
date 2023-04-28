@@ -23,44 +23,44 @@
 
 <div class="bg-img" />
 
-<main class="flex h-screen flex-col items-center justify-center">
-	<div class="mx-auto h-full w-full p-2">
-		<h1 class="mb-8 text-8xl font-bold">S7S</h1>
-		<p class="mb-6 text-lg">A full stack type-safe framework built with</p>
-		<p class="mb-8 text-lg">Svelte-Kit · PrismaDB · Clerk · Redis · TailwindCSS</p>
+<main
+	class="container mx-auto flex h-screen max-w-lg flex-col items-center justify-center self-center p-2 align-middle"
+>
+	<h1 class="mb-8 text-8xl font-bold">S7S</h1>
+	<p class="mb-6 text-lg">A full stack type-safe framework built with</p>
+	<p class="mb-8 text-lg">Svelte-Kit · PrismaDB · Clerk · Redis · TailwindCSS</p>
 
-		<div class="mb-12 rounded-xl border border-zinc-800 bg-zinc-950 p-8">
-			<h3 class="break-before-all overflow-hidden text-ellipsis whitespace-nowrap text-2xl">
-				<a href="https://www.github.com/crowdozer/s7s-stack">github.com/crowdozer/s7s-stack</a>
-			</h3>
-		</div>
+	<div class="mb-12 rounded-xl border border-zinc-800 bg-zinc-950 p-8">
+		<h3 class="break-before-all overflow-hidden text-ellipsis whitespace-nowrap text-2xl">
+			<a href="https://www.github.com/crowdozer/s7s-stack">github.com/crowdozer/s7s-stack</a>
+		</h3>
+	</div>
 
-		{#if $clerkUser.user}
-			<div class="flex flex-row gap-2">
-				<button
-					class="rounded-lg bg-white px-4 py-2 text-purple-500 shadow transition duration-200 hover:shadow-lg"
-					on:click={handleLogOut}
-				>
-					Log Out
-				</button>
-				<button
-					class="rounded-lg bg-white px-4 py-2 text-purple-500 shadow transition duration-200 hover:shadow-lg"
-					on:click={handleGetMyData}
-				>
-					Get My Data
-				</button>
-			</div>
-		{:else}
+	{#if $clerkUser.user}
+		<div class="flex flex-row gap-2">
 			<button
 				class="rounded-lg bg-white px-4 py-2 text-purple-500 shadow transition duration-200 hover:shadow-lg"
-				on:click={handleLogIn}
+				on:click={handleLogOut}
 			>
-				Log In
+				Log Out
 			</button>
-		{/if}
+			<button
+				class="rounded-lg bg-white px-4 py-2 text-purple-500 shadow transition duration-200 hover:shadow-lg"
+				on:click={handleGetMyData}
+			>
+				Get My Data
+			</button>
+		</div>
+	{:else}
+		<button
+			class="rounded-lg bg-white px-4 py-2 text-purple-500 shadow transition duration-200 hover:shadow-lg"
+			on:click={handleLogIn}
+		>
+			Log In
+		</button>
+	{/if}
 
-		<p class="mt-8 text-sm italic text-zinc-400">inspired by T3 for Next</p>
-	</div>
+	<p class="mt-8 text-sm italic text-zinc-400">inspired by T3 for Next</p>
 </main>
 
 <style>
