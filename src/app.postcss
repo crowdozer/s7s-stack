@@ -7,9 +7,14 @@ body {
 	height: 100vh;
 	overflow: hidden;
 	font-family: Consolas, monospace;
+	color: theme(colors.zinc.200);
 }
 
 body {
 	background-image: radial-gradient(at 0% 100%, rgba(120, 0, 0, 0.5) 0px, transparent 50%),
 		radial-gradient(at 98% 100%, rgba(0, 0, 255, 0.75) 0px, black 50%);
+}
+
+a:hover {
+	@apply underline decoration-dashed underline-offset-8;
 }

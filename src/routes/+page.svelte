@@ -22,9 +22,15 @@
 </script>
 
 <main class="flex h-screen flex-col items-center justify-center">
-	<h1 class="mb-8 text-8xl font-bold text-white">S7S</h1>
-	<p class="mb-1 text-lg text-white">A full stack type-safe framework built with</p>
-	<p class="mb-12 text-lg text-white">Svelte-Kit PrismaDB Clerk Redis TailwindCSS</p>
+	<h1 class="mb-8 text-8xl font-bold">S7S</h1>
+	<p class="mb-1 text-lg">A full stack type-safe framework built with</p>
+	<p class="mb-12 text-lg">Svelte-Kit · PrismaDB · Clerk · Redis · TailwindCSS</p>
+
+	<div class="mb-12 rounded-xl border border-zinc-800 bg-zinc-950 p-8">
+		<h3 class="text-2xl">
+			<a href="https://www.github.com/crowdozer/s7s-stack">github.com/crowdozer/s7s-stack</a>
+		</h3>
+	</div>
 
 	{#if $clerkUser.user}
 		<div class="flex flex-row gap-2">
@@ -50,5 +56,5 @@
 		</button>
 	{/if}
 
-	<p class="mt-8 text-lg text-white">inspired by T3 for Next</p>
+	<p class="mt-8 text-sm italic text-zinc-400">inspired by T3 for Next</p>
 </main>
