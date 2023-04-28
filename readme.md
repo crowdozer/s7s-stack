@@ -4,7 +4,7 @@ A Svelte-Kit template repo featuring:
 
 - 🔐 End-to-End type safety (DB to Client!) 
 - 📡 User auth available at the Edge with ZERO network requests 
-- 🐛Strict environment checks that fail during build time, not runtime! 
+- 🐛 Strict environment checks that fail during build time, not runtime! 
 - 💾 A clean and sensible file structure 
 - ✨ Tailwind CSS pre-configured 
 
