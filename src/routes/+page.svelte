@@ -7,8 +7,8 @@
 
 	async function handleGetMyData() {
 		const res = await trpc().users.getMyData.query();
+		console.log('tRPC from server >', res);
 		window.alert('success! check your console');
-		console.log(res);
 	}
 
 	async function handleLogOut() {
