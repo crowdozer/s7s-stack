@@ -28,7 +28,7 @@
 >
 	<h1 class="mb-8 text-8xl font-bold">S7S</h1>
 	<p class="mb-6 text-lg">A full stack type-safe framework built with</p>
-	<p class="mb-8 text-lg">Svelte-Kit · PrismaDB · Clerk · Redis · TailwindCSS</p>
+	<p class="mb-8 text-lg">Svelte-Kit · PrismaDB · tRPC · Clerk · Redis · TailwindCSS</p>
 
 	<div class="mb-12 rounded-xl border border-zinc-800 bg-zinc-950 p-8">
 		<h3 class="break-before-all overflow-hidden text-ellipsis whitespace-nowrap text-2xl">
