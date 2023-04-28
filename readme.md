@@ -1,6 +1,6 @@
 # S7S (aka "stackless") Stack
 
-A Svelte-Kit framework featuring:
+A Svelte-Kit template repo featuring:
 
 - End-to-End type safety (DB to Client!) 🔐
 - User auth available at the Edge with ZERO network requests 📡
