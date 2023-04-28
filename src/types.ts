@@ -30,7 +30,7 @@ export type EdgeAuthState = {
 	jwt?: JwtPayload;
 };
 
-export type EdgeAuthStateGuaranteed = EdgeAuthState & {
+export type EdgeAuthStateGuaranteed = {
 	isLoggedIn: true;
 	id: string;
 	jwt: JwtPayload;
