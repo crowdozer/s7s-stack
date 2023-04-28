@@ -10,4 +10,9 @@ A Svelte-Kit template repo featuring:
 
 ### Important:
 
-This is WIP and has no dedicated full time maintainer. Use at your own discretion, but PR's are welcome.
+This is WIP and has no dedicated full time maintainer. In theory, because it's mostly Svelte-Kit with tRPC and some inferred typing, unforseen circumstances should be trivial to fix.
+
+ However, you should still apply discretion before using this for a major project. 
+ 
+ PR's are welcome.
+
