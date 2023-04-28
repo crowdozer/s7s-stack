@@ -71,8 +71,18 @@ import { ZodError } from 'zod';
 import superjson from 'superjson';
 
 export const t = initTRPC.context<typeof createContext>().create({
+	/**
+	 * Data transformer. This needs to be the same as the one used on the client
+	 */
 	transformer: superjson,
+	/**
+	 * Error handler. If you need to inject custom behavior (logging etc) you
+	 * can do it here.
+	 */
 	errorFormatter({ shape, error }) {
+		console.log('❗ a tRPC error has occurred');
+		console.error(error);
+
 		return {
 			...shape,
 			data: {

@@ -21,10 +21,12 @@
 	}
 </script>
 
+<div class="bg-img" />
+
 <main class="flex h-screen flex-col items-center justify-center">
 	<h1 class="mb-8 text-8xl font-bold">S7S</h1>
-	<p class="mb-1 text-lg">A full stack type-safe framework built with</p>
-	<p class="mb-12 text-lg">Svelte-Kit · PrismaDB · Clerk · Redis · TailwindCSS</p>
+	<p class="mb-6 text-lg">A full stack type-safe framework built with</p>
+	<p class="mb-8 text-lg">Svelte-Kit · PrismaDB · Clerk · Redis · TailwindCSS</p>
 
 	<div class="mb-12 rounded-xl border border-zinc-800 bg-zinc-950 p-8">
 		<h3 class="text-2xl">
@@ -58,3 +60,17 @@
 
 	<p class="mt-8 text-sm italic text-zinc-400">inspired by T3 for Next</p>
 </main>
+
+<style>
+	.bg-img {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: url('./images/bg.png') no-repeat center center fixed;
+		background-size: cover;
+		z-index: -1;
+		opacity: 0.23579;
+	}
+</style>
