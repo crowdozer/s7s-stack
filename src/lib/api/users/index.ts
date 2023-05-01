@@ -1,9 +1,4 @@
-import {
-	createTRPCRouter,
-	authedRequest,
-	guardedProcedure,
-	ratelimitedRequest,
-} from '$server/trpc';
+import { createTRPCRouter, AuthedRateLimitedProcedure } from '$server/trpc';
 import { z } from 'zod';
 
 /**
@@ -14,39 +9,37 @@ export const usersRouter = createTRPCRouter({
 	/**
 	 * If the user is logged in, return all of their data.
 	 */
-	getMyData: guardedProcedure(authedRequest, ratelimitedRequest)
-		.input(
-			z
-				.object({
-					selectAdmin: z.boolean(),
-				})
-				.optional(),
-		)
-		.query(async ({ ctx, input = {} }) => {
-			return {
-				user: ctx.event.locals.user,
-				input: input,
-			};
+	getMyData: AuthedRateLimitedProcedure.input(
+		z
+			.object({
+				selectAdmin: z.boolean(),
+			})
+			.optional(),
+	).query(async ({ ctx, input = {} }) => {
+		return {
+			user: ctx.event.locals.user,
+			input: input,
+		};
 
-			/**
-			 * NOTE: Since you just scaffolded this app, there is no data!
-			 * We'll "fake" some data for now.
-			 *
-			 * "real" implementation below.
-			 */
+		/**
+		 * NOTE: Since you just scaffolded this app, there is no data!
+		 * We'll "fake" some data for now.
+		 *
+		 * "real" implementation below.
+		 */
 
-			// const user = await ctx.prisma.user.findFirstOrThrow({
-			// 	where: {
-			// 		id: ctx.event.locals.user.id,
-			// 	},
-			// 	select: {
-			// 		id: true,
-			// 		isAdmin: input.selectAdmin ?? false
-			// 	}
-			// });
+		// const user = await ctx.prisma.user.findFirstOrThrow({
+		// 	where: {
+		// 		id: ctx.event.locals.user.id,
+		// 	},
+		// 	select: {
+		// 		id: true,
+		// 		isAdmin: input.selectAdmin ?? false
+		// 	}
+		// });
 
-			// return user;
-		}),
+		// return user;
+	}),
 });
 
 /**
@@ -68,15 +61,14 @@ export const usersRouter = createTRPCRouter({
  *
  *
  *
- * 3. `getMyData: guardedProcedure(authedRequest)`
+ * 3. `getMyData: AuthedRateLimitedProcedure
  *
  * To define a procedure, you must either use:
  * 1. t.procedure() (`import { t } from "$server/trpc"`)
  * 2. guardedProcedure() (`import { guardedProcedure } from "$server/trpc"`)
  * 3. a custom procedure (see how `guardedProcedure` is implemented to do this)
  *
- * We're using guardedProcedure, which allows us to enforce certain guard clauses
- * - a user being authenticated, rate limiting, or anything else you dream.
+ * We're using AuthRateLimitedProcedure, which bakes in user auth + rate limiting
  *
  *
  *

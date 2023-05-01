@@ -1,10 +1,20 @@
+import {
+	makeGuardedProcedure,
+	type Guard,
+	type InferredRequestContext,
+	type WithLocals,
+} from '../config';
+import { authedRequest } from './authed';
+
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 
-// process.env fix for Redis.fromEnv()
+/**
+ * process.env fix for Redis.fromEnv()
+ */
 import { S7S_UPSTASH_REDIS_REST_TOKEN, S7S_UPSTASH_REDIS_REST_URL } from '$env/static/private';
 import { TRPCError } from '@trpc/server';
-import type { Guard, InferredRequestContext } from '../config';
+import type { EdgeAuthStateGuaranteed } from '~/types';
 process.env.UPSTASH_REDIS_REST_TOKEN = S7S_UPSTASH_REDIS_REST_TOKEN;
 process.env.UPSTASH_REDIS_REST_URL = S7S_UPSTASH_REDIS_REST_URL;
 
@@ -24,7 +34,7 @@ export const ratelimiter = new Ratelimit({
 /**
  * Enforces that the user isn't spamming requests
  */
-const ratelimitedRequest: Guard<InferredRequestContext, InferredRequestContext> = async (req) => {
+export const ratelimitedRequest: Guard<InferredRequestContext> = async (req) => {
 	const { locals, getClientAddress } = req.event;
 
 	const key = locals.user.isLoggedIn
@@ -45,4 +55,7 @@ const ratelimitedRequest: Guard<InferredRequestContext, InferredRequestContext> 
 	return req;
 };
 
-export default ratelimitedRequest;
+export const RateLimitedProcedure = makeGuardedProcedure(ratelimitedRequest);
+export const AuthedRateLimitedProcedure = makeGuardedProcedure<
+	WithLocals<{ user: EdgeAuthStateGuaranteed }>
+>(authedRequest, ratelimitedRequest);

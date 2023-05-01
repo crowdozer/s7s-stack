@@ -6,18 +6,13 @@ import type { JwtPayload } from 'jsonwebtoken';
 export type ResolvedType<T> = T extends Promise<infer R> ? R : T;
 
 /**
- * DeepMerge is a utility type that deeply merges two types A and B,
- * recursively merging their nested properties. The properties of B
- * take precedence over the properties of A. It works for both object
- * and union types.
+ * Utility type, merges two objects deeply
  */
-export type DeepMerge<A, B> = {
-	[K in keyof A | keyof B]: K extends keyof A
-		? K extends keyof B
-			? DeepMerge<A[K], B[K]>
-			: A[K]
-		: K extends keyof B
-		? B[K]
+export type DeepMerge<Original, Next> = {
+	[Key in keyof Original | keyof Next]: Key extends keyof Next
+		? Next[Key]
+		: Key extends keyof Original
+		? Original[Key]
 		: never;
 };
 
