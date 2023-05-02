@@ -1,24 +1,24 @@
 <script lang="ts">
-	import { clerkInstance, clerkUser } from '$web/stores/clerk';
-	import { trpc } from '$web/utils/trpc';
+	// import { clerkInstance, clerkUser } from '$web/stores/clerk';
+	// import { trpc } from '$web/utils/trpc';
 
 	// just for show
-	$: if ($clerkUser) console.log('Logged in as:', $clerkUser);
+	// $: if ($clerkUser) console.log('Logged in as:', $clerkUser);
 
-	async function handleGetMyData() {
-		const res = await trpc().users.getMyData.query();
-		console.log('tRPC from server >', res);
-		window.alert('success! check your console');
-	}
+	// async function handleGetMyData() {
+	// 	const res = await trpc().users.getMyData.query();
+	// 	console.log('tRPC from server >', res);
+	// 	window.alert('success! check your console');
+	// }
 
-	async function handleLogOut() {
-		await $clerkInstance.signOut();
-		window.location.reload();
-	}
+	// async function handleLogOut() {
+	// 	await $clerkInstance.signOut();
+	// 	window.location.reload();
+	// }
 
-	function handleLogIn() {
-		$clerkInstance.openSignIn();
-	}
+	// function handleLogIn() {
+	// 	$clerkInstance.openSignIn();
+	// }
 </script>
 
 <div class="bg-img" />
@@ -36,7 +36,7 @@
 		</h3>
 	</div>
 
-	{#if $clerkUser.user}
+	<!-- {#if $clerkUser.user}
 		<div class="flex flex-row gap-2">
 			<button
 				class="rounded-lg bg-white px-4 py-2 text-purple-500 shadow transition duration-200 hover:shadow-lg"
@@ -58,7 +58,7 @@
 		>
 			Log In
 		</button>
-	{/if}
+	{/if} -->
 
 	<p class="mt-8 text-sm italic text-zinc-400">inspired by T3 for Next</p>
 </main>
